@@ -43,16 +43,16 @@ def tokenizer(src: str) -> Iterator[Token]:
 if __name__ == "__main__":
     print("[blue bold]CORRETOS")
     for src in exemplos_corretos:
-        tokens = list(tokenizer(src))
         print(f"{src =}")
-        print(f"{tokens =}\n")
-    
-    print("[red bold]INCORRETOS")
+        for token in tokenizer(src):
+            print(f" - {token}")
+        
+    print("\n[red bold]INCORRETOS")
     for src in exemplos_incorretos:
         try:
             tokens = list(tokenizer(src))
         except SyntaxError:
-            print(f"{src =} OK!\n")
+            print(f"{src =} OK!")
         else:
             print(f"{src =}")
             print(f"{tokens =}\n")
