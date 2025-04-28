@@ -28,6 +28,7 @@ class Token:
 
 def tokenizer(src: str) -> Iterator[Token]:
     IGNORE = ("WS", "COMMENT")
+    
     for msg in LEXER.finditer(src):
         kind = cast(str, msg.lastgroup)
         word = msg.group(0)
@@ -37,7 +38,7 @@ def tokenizer(src: str) -> Iterator[Token]:
         if kind in IGNORE:
             continue
         
-    yield Token(kind, word)
+        yield Token(kind, word)
     
 if __name__ == "__main__":
     print("[blue bold]CORRETOS")
